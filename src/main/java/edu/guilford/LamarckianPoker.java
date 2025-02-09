@@ -11,7 +11,9 @@ public class LamarckianPoker {
     private Deck deck;
     private Random rand = new Random();
     private int iTurn;
-
+    /**
+     * * Constructor for LamarckianPoker which resets the game and shuffles the deck
+     */
     public LamarckianPoker() {
         reset(true);
     }
@@ -27,7 +29,10 @@ public class LamarckianPoker {
     public Hand getPool() {
         return pool;
     }
-
+    /**
+     * Resets the game by creating a new standard deck and shuffling it and clearing the discard pile
+     * @param newDeck
+     */
     public void reset(boolean newDeck) {
         if (newDeck) {
             deck = new Deck();
@@ -37,7 +42,9 @@ public class LamarckianPoker {
         }
         iTurn = 0;
     }
-
+    /**
+     * Deals four cards to each player
+     */
     public void deal() {
         player1Hand = new Hand();
         player2Hand = new Hand();
@@ -46,7 +53,9 @@ public class LamarckianPoker {
             player2Hand.addCard(deck.deal());
         }
     }
-
+    /**
+     * * Deals four cards from the deck to form the pool 
+     */
     public void makePool() {
         pool = new Hand();
         for (int iCard = 0; iCard < 4; iCard++) {
@@ -54,9 +63,17 @@ public class LamarckianPoker {
         }
         // System.out.println("Deck size: " + deck.size());
     }
-
+    /**
+     * * Plays a turn of the game. In short, players sacrifice a random card and draw any cards with the same rank or suit from the pool. Unused cards go into the discard pile.
+     * @return true if the game is still going, false if the game is over
+     */
     public boolean turn() {
         if (player1Hand.size() < 7 || player2Hand.size() < 7) {
+            // CHANGE FROM ORIGINAL CODE -- if someone doesn't have any cards, the game is over
+            if (player1Hand.size() == 0 || player2Hand.size() == 0) {
+                return false;
+            }
+        
             makePool();
             // System.out.println("Turn " + iTurn + "\n" + pool);
             Card player1Card = player1Hand.getCard(rand.nextInt(player1Hand.size()));

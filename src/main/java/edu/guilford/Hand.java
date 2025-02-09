@@ -5,8 +5,6 @@ import java.util.ArrayList;
 public class Hand {
     private ArrayList<Card> hand;
 
-    
-
     public Hand() {
         hand = new ArrayList<Card>();
     }
@@ -32,6 +30,10 @@ public class Hand {
     }
 
     // Calculate the value of the hand
+    /**
+     * Calculates the value of the hand according to Blackjack rules
+     * @return the value of the hand 
+     */
     public int getTotalValue() {
         int value = 0;
         int aces = 0;
@@ -72,6 +74,7 @@ public class Hand {
                     break;
             }
         }
+        
         for (int i = 0; i < aces; i++) {
             if (value + 11 <= 21) {
                 value += 11;
@@ -83,6 +86,11 @@ public class Hand {
     }
 
     // Override toString method
+    /**
+     * A string representation of the hand
+     * @return a string representation of the hand
+     */
+    @Override
     public String toString() {
         String handString = "";
         for (Card card : hand) {
