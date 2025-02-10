@@ -2,7 +2,15 @@ package edu.guilford;
 
 import java.util.ArrayList;
 
+/**
+ * Hand class representing a hand of cards
+ * 
+ * @see Card
+ */
 public class Hand {
+    /**
+     * List of cards in the hand
+     */
     private ArrayList<Card> hand;
 
     public Hand() {
@@ -32,7 +40,8 @@ public class Hand {
     // Calculate the value of the hand
     /**
      * Calculates the value of the hand according to Blackjack rules
-     * @return the value of the hand 
+     * 
+     * @return the value of the hand
      */
     public int getTotalValue() {
         int value = 0;
@@ -74,7 +83,7 @@ public class Hand {
                     break;
             }
         }
-        
+
         for (int i = 0; i < aces; i++) {
             if (value + 11 <= 21) {
                 value += 11;
@@ -88,6 +97,7 @@ public class Hand {
     // Override toString method
     /**
      * A string representation of the hand
+     * 
      * @return a string representation of the hand
      */
     @Override

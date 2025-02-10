@@ -1,5 +1,8 @@
 package edu.guilford;
 
+/**
+ * * Driver class for the card games
+ */
 public class CardGameDriver {
     public static void main(String[] args) {
         final int NGAMES = 10000;
@@ -44,11 +47,11 @@ public class CardGameDriver {
 
         boolean gameDone = false;
         while (!gameDone) {
-        //    System.out.println(lmpGame);
+            // System.out.println(lmpGame);
             gameDone = !lmpGame.turn();
         }
-  
-        System.out.println("Final Lamarckian hands\n" + lmpGame);   
+
+        System.out.println("Final Lamarckian hands\n" + lmpGame);
 
     }
 }

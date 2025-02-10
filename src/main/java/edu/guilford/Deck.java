@@ -3,9 +3,18 @@ package edu.guilford;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Deck class representing a deck of standard cards
+ * 
+ * @see Card
+ */
 public class Deck {
+    /**
+     * List of cards form a deck
+     */
     private ArrayList<Card> deck = new ArrayList<Card>();
     private Random rand = new Random();
+
     /**
      * Constructor for the Deck class that builds a standard deck of 52 cards
      */
@@ -16,10 +25,11 @@ public class Deck {
     public ArrayList<Card> getDeck() {
         return deck;
     }
-    
+
     public void clear() {
         deck.clear();
     }
+
     /**
      * Builds a standard deck of 52 cards
      */
@@ -30,6 +40,7 @@ public class Deck {
             }
         }
     }
+
     /**
      * Shuffles the deck
      */
@@ -42,8 +53,10 @@ public class Deck {
         }
         deck = tempDeck;
     }
+
     /**
      * Picks a card and removes it from the deck
+     * 
      * @param i
      * @return the card at index i
      */
@@ -51,8 +64,10 @@ public class Deck {
         Card picked = deck.remove(i);
         return picked;
     }
+
     /**
      * Deals a card from the top of the deck by removing the card at index 0
+     * 
      * @return the card at index 0
      */
     public Card deal() {
@@ -62,8 +77,10 @@ public class Deck {
     public int size() {
         return deck.size();
     }
+
     /**
      * toString method for the Deck class
+     * 
      * @return a string representation of the deck
      */
     @Override

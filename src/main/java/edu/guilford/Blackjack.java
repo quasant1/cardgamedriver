@@ -1,26 +1,42 @@
 package edu.guilford;
 
+/**
+ * * Blackjack class representing a game of Blackjack (player hand, dealer hand,
+ * and deck)
+ * 
+ * @see Card
+ * @see Hand
+ * @see Deck
+ * 
+ */
 public class Blackjack {
+    /**
+     * Player's hand
+     */
     private Hand playerHand;
+    /**
+     * Dealer's hand
+     */
     private Hand dealerHand;
+    /**
+     * Deck they are playing with
+     */
     private Deck deck;
+
     /**
      * * Constructor for Blackjack which resets the game and shuffles the deck
      */
     public Blackjack() {
         reset(true);
     }
-    
 
     public Hand getPlayerHand() {
         return playerHand;
     }
 
-
     public Hand getDealerHand() {
         return dealerHand;
     }
-
 
     public Deck getDeck() {
         return deck;
@@ -28,6 +44,7 @@ public class Blackjack {
 
     /**
      * Resets the game by creating a new standard deck and shuffling it
+     * 
      * @param newDeck
      */
     public void reset(boolean newDeck) {
@@ -36,6 +53,7 @@ public class Blackjack {
             deck.shuffle();
         }
     }
+
     /**
      * Deals two cards to the player and dealer
      */
@@ -47,9 +65,12 @@ public class Blackjack {
         playerHand.addCard(deck.deal());
         dealerHand.addCard(deck.deal());
     }
+
     /**
      * * Player's turn to draw until they reach 16 or higher
-     * @return true if the player is still in the game, false if they bust (value of cards is over 21)
+     * 
+     * @return true if the player is still in the game, false if they bust (value of
+     *         cards is over 21)
      */
     public boolean playerTurn() {
         while (playerHand.getTotalValue() < 16) {
@@ -58,9 +79,12 @@ public class Blackjack {
         return playerHand.getTotalValue() <= 21;
 
     }
+
     /**
      * * Dealer's turn to draw until they reach 17 or higher
-     * @return true if the dealer is still in the game, false if they bust (value of cards is over 21)
+     * 
+     * @return true if the dealer is still in the game, false if they bust (value of
+     *         cards is over 21)
      */
     public boolean dealerTurn() {
         while (dealerHand.getTotalValue() < 17) {
@@ -72,6 +96,7 @@ public class Blackjack {
     // Override toString
     /**
      * * Returns a string representation of the player's and dealer's hands
+     * 
      * @return String representation of the player's and dealer's hands
      */
     @Override
