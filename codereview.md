@@ -12,6 +12,7 @@ that wasn't an explicit specification I think. The code formatting was fine, but
 ```
 discard.getDeck().add(firstCard);
 ```
+This should work, since it bascially just skips the step of putting the card into the pool and puts it into the discard pile directly.
 
 ### Do all methods have a clear purpose? Is there any debugging code that should be commented out?
 Yes, I think the methods have a clear purpose. There was an `iTurn` variable in the `LamarckianPoker` class that seemed to track the number of turns during the game, but it didn't seem to be used anywhere in the results, so I commented it out.
@@ -35,7 +36,7 @@ Most of the code seems not-repetitive and short. The `turn()` method in the `Lam
 This should work, since before, the code was basically rewriting the `compareTo()` function.
 
 ### Are there any “magic number” constants that should be redefined as final variables? 
-Both in `Blackjack` and `LamarckianPoker`, there are some important numbers that will never change. For example, the number of cards that are in the pool in Lamarckian Poker (4) or the bust number in Blackjack (21). Instead of using these numbers in the if conditions and loops, they could be declared as final and static variables, since they do not change from one object to another.
+Both in `Blackjack` and `LamarckianPoker`, there are some important numbers that will never change. For example, the number of cards that are in the pool in Lamarckian Poker (4) or the bust number in Blackjack (21). Instead of using these numbers in the if conditions and loops, they could be declared as final and static variables, since they do not change from one object to another. This would be a simple replacement of numbers into variables, so it shouldn't change how the code works.
 
 ### Is there any complexity that can be simplified by the use of multiple, clearer methods?
 In the `turn()` method in the `LamarckianPoker` class, there is some repetition. The turns of the first player and second player are pretty much the same. To simplify this code, it might be good to have a separate method that does the repeated work and just call that method twice with the first and second hand. I didn't end up changing the code, but note how lines 158-173 is very similar to lines 175-186.
@@ -67,8 +68,7 @@ This exception does not happen all the time. It is likely that neither player wi
 reach 7 cards. In this case, the game ends smoothly, and no exception is thrown.
 
 ### How to fix it 
-The fix can be simple. If a player has no card, they lose, and the game is 0. So `turns()` can return false, and the game will be terminated
-before the random function is called. Although it may seem obvious, 
+The fix can be simple. If a player has no card, they lose, and the game is 0. So `turns()` can return false, and the game will be terminated before the random function is called. See lines 107-109 in `LamarckianPoker`. This should fix the problem, since `rand.nextInt(0)` would never be called. Although it may seem obvious, 
 it may be good to add that someone loses if they run out of cards in the project specifications.
 
 ## `IndexOutOfBoundsException`
