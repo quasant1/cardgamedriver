@@ -68,7 +68,14 @@ This exception does not happen all the time. It is likely that neither player wi
 reach 7 cards. In this case, the game ends smoothly, and no exception is thrown.
 
 ### How to fix it 
-The fix can be simple. If a player has no card, they lose, and the game is 0. So `turns()` can return false, and the game will be terminated before the random function is called. See lines 107-109 in `LamarckianPoker`. This should fix the problem, since `rand.nextInt(0)` would never be called. Although it may seem obvious, 
+The fix can be simple. If a player has no card, they lose, and the game is 0. So `turns()` can return false, and the game will be terminated before the random function is called. See lines 107-109 in `LamarckianPoker`. This should fix the problem, since `rand.nextInt(0)` would never be called. 
+```
+if (player1Hand.size() == 0 || player2Hand.size() == 0) {
+    return false;
+}
+```
+
+Although it may seem obvious, 
 it may be good to add that someone loses if they run out of cards in the project specifications.
 
 ## `IndexOutOfBoundsException`
